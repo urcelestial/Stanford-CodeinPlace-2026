@@ -62,15 +62,18 @@ def main():
         num = input(f"Player {player} would you like to remove 1 or 2 stones? ")
         num = int(num)
 
-        incorrect_number = True
+        if num != 1 and num != 2:
+            incorrect_number = True #If the player inputs other than 1 and 2, then it will ask to enter again
+        else:
+            incorrect_number = False #If player enters 1 or 2, the code will continue without going through the loop
 
-        while (incorrect_number) :
+        while (incorrect_number):
             num = input("Please enter 1 or 2: ") #The player will be asked to put a number again until it follows the rules
             num = int(num)
 
             if num == 1 or num == 2:
                 incorrect_number = False #If the player enters the number accordingly, the loop stops and continue to the next step
-
+                
         num = int(num)
         stones = stones - num #Whatever amount of stones there was, is subtracted by the number that user inputs
 
@@ -97,9 +100,12 @@ def main():
         num = input(f"Player {next_player} would you like to remove 1 or 2 stones? ")
         num = int(num)
 
-        incorrect_number = True
+        if num != 1 and num != 2:
+            incorrect_number = True #If the player inputs other than 1 and 2, then it will ask to enter again
+        else:
+            incorrect_number = False #If player enters 1 or 2, the code will continue without going through the loop
 
-        while (incorrect_number) :
+        while (incorrect_number):
             num = input("Please enter 1 or 2: ") #The player will be asked to put a number again until it follows the rules
             num = int(num)
 
