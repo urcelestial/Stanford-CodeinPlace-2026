@@ -5,55 +5,235 @@ import time
 CANVAS_WIDTH = 800
 CANVAS_HEIGHT = 600
 
-"""
-SUMMARY:
 
-This is a mini analysis app to discover women's makeup style
-based of their facial features. All users need to do is choose
-the facial features they have and the algorithm will decide 
-which makeup style fits them the best!
-
-MILESTONE 1:
-1. Create a menu screen with background.
-2. Create title
-3. Create a button to start the analysis
-
-MILESTONE 2:
-1. Clear the menu screen
-2. Start a new screen that provides questions about the facial features:
-    Questions: 
-    1. Eyes
-    2. Eyebrows
-    3. Nose
-    4. Lips
-    5. Face shape
-    6. Skin color
-3. Upload 3 images as choices for each questions, and users can click
-whatever facial features fits them most
-4. All 5 answers will be stored
-
-MILESTONE 3:
-1. Clear the questions screen
-2. Create a transition screen (such as '3..2..1' or 'analysing...')
-
-MILESTONE 4:
-1. Clear the transtion screen
-2. Use the if statements to determine the results
-3. Upload pictures of makeup styles that will fit users the best.
-4. Make a button to go back to menu screen
-"""
-
-"""
-MILESTONE 1
-"""
-
-### MENU SCREEN ###
 def main():
     canvas = Canvas(CANVAS_WIDTH, CANVAS_HEIGHT)
     menu(canvas)
 
 def menu(canvas):
-    canvas.create_image(0,0,"menu.PNG")
+    # APP TITLE
+    canvas.create_image(0,0, 'menu.PNG')
+
+    canvas.create_text(
+        400,
+        100,
+        color= 'black',
+        font_size= 100,
+        font="Copperplate",
+        text="BeDazzel",
+        anchor= 'Center'
+    )
+    canvas.create_text(
+        400,
+        150,
+        color= 'black',
+        font_size= 35,
+        font="Copperplate",
+        text="~Make your life more interesting~",
+        anchor= 'Center'
+    )
+
+    canvas.create_oval(
+        250,
+        200,
+        550,
+        260,
+        'white'
+    )
+    canvas.create_text(
+        400,
+        230,
+        color= 'black',
+        font_size= 30,
+        font="Times New Roman",
+        text="Choose to Start",
+        anchor= 'Center'
+    )
+
+    # Feminine Energy Option
+    canvas.create_rectangle(
+        80,
+        280,
+        380,
+        580,
+        'white',
+        'black'
+    )
+    canvas.create_image(80,280, 'feminine_option.PNG')
+
+    # Masculine Energy Option
+    canvas.create_rectangle(
+        420,
+        280,
+        720,
+        580,
+        'white',
+        'black'
+    )
+    canvas.create_image(420,280,'masculine_option.PNG')
+
+    # Start a loop for when the player clicks the Feminine Option
+    while True:
+
+        # catch the mouse click 
+        clicks = canvas.get_new_mouse_clicks()
+
+        if len(clicks) > 0:
+            click = clicks[0]
+
+            if click is not None:
+
+                if 80 <= click[0] <= 380 and 300 <= click[1] <= 550:
+                    canvas.clear()
+                    feminine(canvas)
+                    break
+
+                elif 420 <= click[0] <= 720 and 300 <= click[1] <= 550:
+                    canvas.clear()
+                    masculine(canvas)
+                    break
+
+
+
+
+
+#############################################################################
+                        # FEMININE ENERGY #
+#############################################################################
+def feminine(canvas):
+    canvas.create_image(0,0,"feminine.PNG")
+
+    # Feminine Title
+    canvas.create_rectangle(
+        80,
+        120,
+        720,
+        180,
+        'pink'
+    )
+    canvas.create_text(
+        400,
+        150,
+        font="Copperplate",
+        text='Feminine Energy',
+        color='White',
+        anchor='center',
+        font_size= 60
+    )
+    
+    canvas.create_oval(
+        150,
+        200,
+        650,
+        270,
+        'pink'
+    )
+    canvas.create_text(
+        400,
+        235,
+        font="Copperplate",
+        text='Choose Your Path',
+        color='White',
+        anchor='center',
+        font_size= 45
+    )
+
+
+    # Option 1
+    canvas.create_rectangle(
+        200,
+        280,
+        600,
+        330,
+        'white',
+        'black'
+    )
+    canvas.create_text(
+        400,
+        305,
+        font="Times New Roman",
+        text='Makeup',
+        color='Black',
+        anchor='center',
+        font_size= 30
+    )
+
+
+    # Option 2
+    canvas.create_rectangle(
+        200,
+        350,
+        600,
+        400,
+        'white',
+        'black'
+    )
+    canvas.create_text(
+        400,
+        375,
+        font="Times New Roman",
+        text='Hairstyle',
+        color='Black',
+        anchor='center',
+        font_size= 30
+    )
+
+
+    # Option 3
+    canvas.create_rectangle(
+        200,
+        420,
+        600,
+        470,
+        'white',
+        'black'
+    )
+    canvas.create_text(
+        400,
+        445,
+        font="Times New Roman",
+        text='Fashion',
+        color='Black',
+        anchor='center',
+        font_size= 30
+    )
+
+
+
+ # Start a loop for when the player clicks one of the option
+    while True:
+
+        # catch the mouse click 
+        clicks = canvas.get_new_mouse_clicks()
+
+        if len(clicks) > 0:
+            click = clicks[0]
+
+            if click is not None:
+
+                if 200 <= click[0] <= 600 and 280 <= click[1] <= 330:
+                    canvas.clear()
+                    feminine_makeup(canvas)
+                    break
+
+                elif 200 <= click[0] <= 600 and 350 <= click[1] <= 400:
+                    canvas.clear()
+                    feminine_hairstyle(canvas)
+                    break
+
+                elif 200 <= click[0] <= 600 and 420 <= click[1] <= 470:
+                    canvas.clear()
+                    feminine_fashion(canvas)
+                    break
+
+
+#############################################################################
+
+
+### MAKEUP SCREEN ###
+
+def feminine_makeup(canvas):
+    canvas.create_image(0,0,"feminine.PNG")
     canvas.create_rectangle(
         100,
         200,
@@ -103,12 +283,10 @@ def menu(canvas):
 
                 if 200 <= click[0] <= 600 and 350 <= click[1] <= 450:
                     canvas.clear()
-                    questions(canvas)
+                    questions_makeup(canvas)
                     break
 
-"""
-MILESTONE 2
-"""
+
 ### QUESTIONS SCREEN ###
 
 MAKEUP_QUESTIONS = [
@@ -227,7 +405,7 @@ MAKEUP_QUESTIONS = [
     }
 ]
 
-def questions(canvas):
+def questions_makeup(canvas):
 
     user_selection = []
     current_question = 0
@@ -335,10 +513,7 @@ def questions(canvas):
         analyzing(canvas)
         western_makeup(canvas)
 
-
-# MILESTONE 3
-
-### ANALYZING SCREEN ###
+############################### ANALYZING SCREEN ############################################
 
 def analyzing(canvas):
     canvas.clear()
@@ -346,14 +521,14 @@ def analyzing(canvas):
     # Counting down
     i = 3
     while i >= 1:
-        canvas.create_image(0,0,'transition.PNG')
+        canvas.create_image(0,0,'menu.PNG')
         canvas.create_text(
             400,
             250,
             font= 'Copperplate',
             font_size= 30,
             text= 'Analyzing...',
-            color= 'white',
+            color= 'black',
             anchor= 'center'
         )
 
@@ -363,7 +538,7 @@ def analyzing(canvas):
             font= 'Georgia',
             font_size= 100,
             text= str(i),
-            color= 'white',
+            color= 'black',
             anchor= 'center'
         )
         
@@ -373,7 +548,9 @@ def analyzing(canvas):
 
     canvas.clear()
 
-        
+#############################################################################################
+
+############################# MAKEUP ANSWERS ##################################
 def korean_makeup(canvas):
     canvas.create_image(0,0, "korean_makeup.PNG")
 
@@ -498,9 +675,1069 @@ def mediterannian_makeup(canvas):
 
     back_to_menu(canvas)
 
+#############################################################################
 
-# MILESTONE 4 #
-# Configure a 'back to menu' 
+############################# HAIRSTYLE SCREEN #############################
+
+def feminine_hairstyle(canvas):
+    canvas.create_image(0,0,"feminine.PNG")
+    canvas.create_rectangle(
+        100,
+        200,
+        700,
+        300,
+        'white',
+        'pink'
+    )
+
+    canvas.create_text(
+        400,
+        250,
+        font_size = 45,
+        font= "Copperplate",
+        color= '#FAACE9',
+        text= 'Find Your Hair Style!',
+        anchor= 'center'
+    )
+
+    canvas.create_oval(
+        400,
+        150,
+        750,
+        220,
+        'pink'
+    )
+
+    canvas.create_text(
+        575,
+        185,
+        font_size = 30,
+        font= "Copperplate",
+        color= 'white',
+        text= 'Bangs Edition',
+        anchor= 'center'
+    )
+
+    canvas.create_oval(
+        200,
+        350,
+        600,
+        450,
+        'white'
+    )
+    canvas.create_text(
+        400,
+        400,
+        font_size = 35,
+        font= "Copperplate",
+        color= '#FAACE9',
+        text= 'Click here to start',
+        anchor= 'center'
+    )
+
+    # Start a loop for when the player clicks the start button
+    while True:
+
+        # catch the mouse click 
+        clicks = canvas.get_new_mouse_clicks()
+
+        if len(clicks) > 0:
+            click = clicks[0]
+
+            if click is not None:
+
+                if 200 <= click[0] <= 600 and 350 <= click[1] <= 450:
+                    canvas.clear()
+                    questions_hairstyle_feminine(canvas)
+                    break
+
+
+def questions_hairstyle_feminine(canvas):
+    canvas.create_image(0,0, 'transition.PNG')
+
+    canvas.create_text(
+        400,
+        80,
+        font_size= 40,
+        text= 'What is your face shape?',
+        color= 'black',
+        font= 'Copperplate',
+        anchor= 'center'
+    )
+
+
+    # OPTION 1
+    girl_oval = canvas.create_rectangle(
+        50,
+        120,
+        250,
+        320,
+        'black'
+    )
+    canvas.create_image(50,120,'oval_girl.PNG')
+
+    # OPTION 2
+    girl_round = canvas.create_rectangle(
+        300,
+        120,
+        500,
+        320,
+        'black'
+    )
+    canvas.create_image(300,120,'round_girl.PNG')
+
+    # OPTION 3
+    girl_square = canvas.create_rectangle(
+        550,
+        120,
+        750,
+        320,
+        'black'
+    )
+    canvas.create_image(550,120,'square_girl.PNG')
+
+    # OPTION 4
+    girl_heart = canvas.create_rectangle(
+        150,
+        350,
+        350,
+        550,
+        'black'
+    )
+    canvas.create_image(150,350,'heart_girl.PNG')
+
+    # OPTION 5
+    girl_long = canvas.create_rectangle(
+        450,
+        350,
+        650,
+        550,
+        'black'
+    )
+    canvas.create_image(450,350,'long_girl.PNG')
+
+
+    # Start a loop for when the player clicks the Face Shape
+    while True:
+
+        # catch the mouse click 
+        clicks = canvas.get_new_mouse_clicks()
+
+        if len(clicks) > 0:
+            click = clicks[0]
+
+            if click is not None:
+
+                if 50 <= click[0] <= 250 and 120 <= click[1] <= 320:
+                    canvas.clear()
+                    analyzing(canvas)
+                    oval_shape_feminine(canvas)
+                    back_to_menu(canvas)
+                    break
+                if 300 <= click[0] <= 500 and 120 <= click[1] <= 320:
+                    canvas.clear()
+                    analyzing(canvas)
+                    round_shape_feminine(canvas)
+                    back_to_menu(canvas)
+                    break
+                if 550 <= click[0] <= 750 and 120 <= click[1] <= 320:
+                    canvas.clear()
+                    analyzing(canvas)
+                    square_shape_feminine(canvas)
+                    back_to_menu(canvas)
+                    break
+                if 150 <= click[0] <= 350 and 350 <= click[1] <= 550:
+                    canvas.clear()
+                    analyzing(canvas)
+                    heart_shape_feminine(canvas)
+                    back_to_menu(canvas)
+                    break
+                if 450 <= click[0] <= 650 and 350 <= click[1] <= 550:
+                    canvas.clear()
+                    analyzing(canvas)
+                    long_shape_feminine(canvas)
+                    back_to_menu(canvas)
+                    break
+
+def oval_shape_feminine(canvas):
+    canvas.create_image(0,0, 'transition.PNG')
+
+    canvas.create_image(50,250,'oval_face1.PNG')
+
+    canvas.create_text(
+        400,
+        200,
+        text= 'Here is the best bangs for your face shape!',
+        color= 'Black',
+        font_size= 35,
+        font= 'Copperplate',
+        anchor= 'Center'
+
+    )
+
+def round_shape_feminine(canvas):
+    canvas.create_image(0,0, 'transition.PNG')
+
+    canvas.create_image(50,250,'round_face1.PNG')
+
+    canvas.create_text(
+        400,
+        200,
+        text= 'Here is the best bangs for your face shape!',
+        color= 'Black',
+        font_size= 35,
+        font= 'Copperplate',
+        anchor= 'Center'
+
+    )
+
+def square_shape_feminine(canvas):
+    canvas.create_image(0,0, 'transition.PNG')
+
+    canvas.create_image(50,250,'square_face1.PNG')
+
+    canvas.create_text(
+        400,
+        200,
+        text= 'Here is the best bangs for your face shape!',
+        color= 'Black',
+        font_size= 35,
+        font= 'Copperplate',
+        anchor= 'Center'
+
+    )
+
+def heart_shape_feminine(canvas):
+    canvas.create_image(0,0, 'transition.PNG')
+
+    canvas.create_image(50,250,'heart_face1.PNG')
+
+    canvas.create_text(
+        400,
+        200,
+        text= 'Here is the best bangs for your face shape!',
+        color= 'Black',
+        font_size= 35,
+        font= 'Copperplate',
+        anchor= 'Center'
+
+    )
+
+def long_shape_feminine(canvas):
+    canvas.create_image(0,0, 'transition.PNG')
+
+    canvas.create_image(50,250,'long_face1.PNG')
+
+    canvas.create_text(
+        400,
+        200,
+        text= 'Here is the best bangs for your face shape!',
+        color= 'Black',
+        font_size= 35,
+        font= 'Copperplate',
+        anchor= 'Center'
+    )
+
+#############################################################################
+
+############################## FASHION SCREEN ###############################
+def feminine_fashion(canvas):
+    canvas.create_image(0,0,"feminine.PNG")
+    canvas.create_rectangle(
+        100,
+        200,
+        700,
+        300,
+        'white',
+        'pink'
+    )
+
+    canvas.create_text(
+        400,
+        250,
+        font_size = 45,
+        font= "Copperplate",
+        color= '#FAACE9',
+        text= 'Find Your Fashion Style!',
+        anchor= 'center'
+    )
+
+    canvas.create_oval(
+        200,
+        350,
+        600,
+        450,
+        'white'
+    )
+    canvas.create_text(
+        400,
+        400,
+        font_size = 35,
+        font= "Copperplate",
+        color= '#FAACE9',
+        text= 'Click here to start',
+        anchor= 'center'
+    )
+
+    # Start a loop for when the player clicks the start button
+    while True:
+
+        # catch the mouse click 
+        clicks = canvas.get_new_mouse_clicks()
+
+        if len(clicks) > 0:
+            click = clicks[0]
+
+            if click is not None:
+
+                if 200 <= click[0] <= 600 and 350 <= click[1] <= 450:
+                    canvas.clear()
+                    questions_fashion_feminine(canvas)
+                    break
+
+
+def questions_fashion_feminine(canvas):
+    canvas.create_image(0,0, 'transition.PNG')
+
+    canvas.create_text(
+        400,
+        70,
+        font_size= 40,
+        text= 'Select the Season',
+        color= 'black',
+        font= 'Copperplate',
+        anchor= 'center'
+    )
+
+
+    # OPTION 1
+    spring = canvas.create_rectangle(
+        150,
+        100,
+        350,
+        300,
+        'black'
+    )
+
+    canvas.create_image(150,100, 'spring.PNG')
+
+    # OPTION 2
+    summer = canvas.create_rectangle(
+        450,
+        100,
+        650,
+        300,
+        'black'
+    )
+
+    canvas.create_image(450,100, 'summer.PNG')
+
+
+    # OPTION 3
+    fall = canvas.create_rectangle(
+        150,
+        350,
+        350,
+        550,
+        'black'
+    )
+
+    canvas.create_image(150,350, 'fall.PNG')
+
+    # OPTION 4
+    winter = canvas.create_rectangle(
+        450,
+        350,
+        650,
+        550,
+        'black'
+    )
+
+    canvas.create_image(450,350, 'winter.PNG')
+
+
+
+# Start a loop for when the player clicks the Face Shape
+    while True:
+
+        # catch the mouse click 
+        clicks = canvas.get_new_mouse_clicks()
+
+        if len(clicks) > 0:
+            click = clicks[0]
+
+            if click is not None:
+
+                if 150 <= click[0] <= 350 and 100 <= click[1] <= 300:
+                    canvas.clear()
+                    analyzing(canvas)
+                    spring_feminine(canvas)
+                    back_to_menu(canvas)
+                    break
+                if 450 <= click[0] <= 650 and 100 <= click[1] <= 300:
+                    canvas.clear()
+                    analyzing(canvas)
+                    summer_feminine(canvas)
+                    back_to_menu(canvas)
+                    break
+                if 150 <= click[0] <= 350 and 350 <= click[1] <= 550:
+                    canvas.clear()
+                    analyzing(canvas)
+                    fall_feminine(canvas)
+                    back_to_menu(canvas)
+                    break
+                if 450 <= click[0] <= 650 and 350 <= click[1] <= 550:
+                    canvas.clear()
+                    analyzing(canvas)
+                    winter_feminine(canvas)
+                    back_to_menu(canvas)
+                    break
+
+
+def spring_feminine(canvas):
+    canvas.create_image(0,0, 'transition.PNG')
+
+    canvas.create_text(
+        400,
+        300,
+        font_size= 30,
+        text= 'OPPS! COME BACK LATER FOR THE RESULTS',
+        color= 'black',
+        font= 'Copperplate',
+        anchor= 'center'
+    )
+
+def summer_feminine(canvas):
+    canvas.create_image(0,0, 'transition.PNG')
+
+    canvas.create_text(
+        400,
+        300,
+        font_size= 30,
+        text= 'OPPS! COME BACK LATER FOR THE RESULTS',
+        color= 'black',
+        font= 'Copperplate',
+        anchor= 'center'
+    )
+
+def fall_feminine(canvas):
+    canvas.create_image(0,0, 'transition.PNG')
+
+    canvas.create_text(
+        400,
+        300,
+        font_size= 30,
+        text= 'OPPS! COME BACK LATER FOR THE RESULTS',
+        color= 'black',
+        font= 'Copperplate',
+        anchor= 'center'
+    )
+
+def winter_feminine(canvas):
+    canvas.create_image(0,0, 'transition.PNG')
+
+    canvas.create_text(
+        400,
+        300,
+        font_size= 30,
+        text= 'OPPS! COME BACK LATER FOR THE RESULTS',
+        color= 'black',
+        font= 'Copperplate',
+        anchor= 'center'
+    )
+
+
+#############################################################################
+
+
+
+
+
+
+
+#############################################################################
+                        # MASCULINE ENERGY #
+#############################################################################
+
+def masculine(canvas):
+    canvas.create_image(0,0, 'masculine.PNG')
+
+    # Masculine Title
+    canvas.create_rectangle(
+        80,
+        120,
+        720,
+        180,
+        '#7cb5fbff'
+    )
+    canvas.create_text(
+        400,
+        150,
+        font="Copperplate",
+        text='Masculine Energy',
+        color='White',
+        anchor='center',
+        font_size= 60
+    )
+    
+    canvas.create_oval(
+        150,
+        200,
+        650,
+        270,
+        '#7cb5fbff'
+    )
+    canvas.create_text(
+        400,
+        235,
+        font="Copperplate",
+        text='Choose Your Path',
+        color='White',
+        anchor='center',
+        font_size= 45
+    )
+
+
+    # Option 1
+    canvas.create_rectangle(
+        200,
+        280,
+        600,
+        330,
+        'white',
+        'black'
+    )
+    canvas.create_text(
+        400,
+        305,
+        font="Times New Roman",
+        text='Hairstyle',
+        color='Black',
+        anchor='center',
+        font_size= 30
+    )
+
+
+    # Option 2
+    canvas.create_rectangle(
+        200,
+        350,
+        600,
+        400,
+        'white',
+        'black'
+    )
+    canvas.create_text(
+        400,
+        375,
+        font="Times New Roman",
+        text='Fashion',
+        color='Black',
+        anchor='center',
+        font_size= 30
+    )
+
+
+    # Coming soon label
+    canvas.create_rectangle(
+        200,
+        420,
+        600,
+        470,
+        'grey',
+        'black'
+    )
+    canvas.create_text(
+        400,
+        445,
+        font="Times New Roman",
+        text='More features coming soon',
+        color='Black',
+        anchor='center',
+        font_size= 30
+    )
+
+
+
+ # Start a loop for when the player clicks one of the option
+    while True:
+
+        # catch the mouse click 
+        clicks = canvas.get_new_mouse_clicks()
+
+        if len(clicks) > 0:
+            click = clicks[0]
+
+            if click is not None:
+
+                if 200 <= click[0] <= 600 and 280 <= click[1] <= 330:
+                    canvas.clear()
+                    masculine_hairstyle(canvas)
+                    break
+
+                elif 200 <= click[0] <= 600 and 350 <= click[1] <= 400:
+                    canvas.clear()
+                    masculine_fashion(canvas)
+                    break
+#############################################################################
+
+
+########################### Masculine Hairstyle #############################
+
+def masculine_hairstyle(canvas):
+    canvas.create_image(0,0,"masculine.PNG")
+    canvas.create_rectangle(
+        100,
+        200,
+        700,
+        300,
+        'white',
+        'pink'
+    )
+
+    canvas.create_text(
+        400,
+        250,
+        font_size = 45,
+        font= "Copperplate",
+        color= 'blue',
+        text= 'Find Your Hair Style!',
+        anchor= 'center'
+    )
+
+
+    canvas.create_oval(
+        200,
+        350,
+        600,
+        450,
+        'white'
+    )
+    canvas.create_text(
+        400,
+        400,
+        font_size = 35,
+        font= "Copperplate",
+        color= 'blue',
+        text= 'Click here to start',
+        anchor= 'center'
+    )
+
+    # Start a loop for when the player clicks the start button
+    while True:
+
+        # catch the mouse click 
+        clicks = canvas.get_new_mouse_clicks()
+
+        if len(clicks) > 0:
+            click = clicks[0]
+
+            if click is not None:
+
+                if 200 <= click[0] <= 600 and 350 <= click[1] <= 450:
+                    canvas.clear()
+                    questions_hairstyle_masculine(canvas)
+                    break
+
+
+def questions_hairstyle_masculine(canvas):
+    canvas.create_image(0,0, 'masculine.PNG')
+
+    canvas.create_text(
+        400,
+        80,
+        font_size= 40,
+        text= 'What is your face shape?',
+        color= 'black',
+        font= 'Copperplate',
+        anchor= 'center'
+    )
+
+
+    # OPTION 1
+    boy_oval = canvas.create_rectangle(
+        50,
+        120,
+        250,
+        320,
+        'black'
+    )
+    canvas.create_image(50,120,'oval_boy.PNG')
+
+    # OPTION 2
+    boy_round = canvas.create_rectangle(
+        300,
+        120,
+        500,
+        320,
+        'black'
+    )
+    canvas.create_image(300,120,'round_boy.PNG')
+
+    # OPTION 3
+    boy_square = canvas.create_rectangle(
+        550,
+        120,
+        750,
+        320,
+        'black'
+    )
+    canvas.create_image(550,120,'square_boy.PNG')
+
+    # OPTION 4
+    boy_heart = canvas.create_rectangle(
+        150,
+        350,
+        350,
+        550,
+        'black'
+    )
+    canvas.create_image(150,350,'rectangle_boy.PNG')
+
+    # OPTION 5
+    boy_long = canvas.create_rectangle(
+        450,
+        350,
+        650,
+        550,
+        'black'
+    )
+    canvas.create_image(450,350,'diamond_boy.PNG')
+
+
+    # Start a loop for when the player clicks the Face Shape
+    while True:
+
+        # catch the mouse click 
+        clicks = canvas.get_new_mouse_clicks()
+
+        if len(clicks) > 0:
+            click = clicks[0]
+
+            if click is not None:
+
+                if 50 <= click[0] <= 250 and 120 <= click[1] <= 320:
+                    canvas.clear()
+                    analyzing(canvas)
+                    oval_shape_masculine(canvas)
+                    back_to_menu(canvas)
+                    break
+                if 300 <= click[0] <= 500 and 120 <= click[1] <= 320:
+                    canvas.clear()
+                    analyzing(canvas)
+                    round_shape_masculine(canvas)
+                    back_to_menu(canvas)
+                    break
+                if 550 <= click[0] <= 750 and 120 <= click[1] <= 320:
+                    canvas.clear()
+                    analyzing(canvas)
+                    square_shape_masculine(canvas)
+                    back_to_menu(canvas)
+                    break
+                if 150 <= click[0] <= 350 and 350 <= click[1] <= 550:
+                    canvas.clear()
+                    analyzing(canvas)
+                    rectangle_shape_masculine(canvas)
+                    back_to_menu(canvas)
+                    break
+                if 450 <= click[0] <= 650 and 350 <= click[1] <= 550:
+                    canvas.clear()
+                    analyzing(canvas)
+                    diamond_shape_masculine(canvas)
+                    back_to_menu(canvas)
+                    break
+
+def oval_shape_masculine(canvas):
+    canvas.create_image(0,0, 'masculine.PNG')
+
+    canvas.create_image(50,250,'oval_face2.PNG')
+
+    canvas.create_text(
+        400,
+        200,
+        text= 'Here is the best hairstyle for your face shape!',
+        color= 'white',
+        font_size= 30,
+        font= 'Copperplate',
+        anchor= 'Center'
+
+    )
+
+def round_shape_masculine(canvas):
+    canvas.create_image(0,0, 'masculine.PNG')
+
+    canvas.create_image(50,250,'round_face2.PNG')
+
+    canvas.create_text(
+        400,
+        200,
+        text= 'Here is the best hairstyle for your face shape!',
+        color= 'white',
+        font_size= 30,
+        font= 'Copperplate',
+        anchor= 'Center'
+
+    )
+
+def square_shape_masculine(canvas):
+    canvas.create_image(0,0, 'masculine.PNG')
+
+    canvas.create_image(50,250,'square_face2.PNG')
+
+    canvas.create_text(
+        400,
+        200,
+        text= 'Here is the best hairstyle for your face shape!',
+        color= 'white',
+        font_size= 30,
+        font= 'Copperplate',
+        anchor= 'Center'
+
+    )
+
+def rectangle_shape_masculine(canvas):
+    canvas.create_image(0,0, 'masculine.PNG')
+
+    canvas.create_image(50,250,'rectangle_face.PNG')
+
+    canvas.create_text(
+        400,
+        200,
+        text= 'Here is the best hairstyle for your face shape!',
+        color= 'white',
+        font_size= 30,
+        font= 'Copperplate',
+        anchor= 'Center'
+
+    )
+
+def diamond_shape_masculine(canvas):
+    canvas.create_image(0,0, 'masculine.PNG')
+
+    canvas.create_image(50,250,'diamond_face.PNG')
+
+    canvas.create_text(
+        400,
+        200,
+        text= 'Here is the best hairstyle for your face shape!',
+        color= 'white',
+        font_size= 30,
+        font= 'Copperplate',
+        anchor= 'Center'
+    )
+
+#############################################################################################
+
+################################# FASHION MASCULINE #########################################
+
+def masculine_fashion(canvas):
+    canvas.create_image(0,0,"masculine.PNG")
+    canvas.create_rectangle(
+        100,
+        200,
+        700,
+        300,
+        'white',
+    )
+
+    canvas.create_text(
+        400,
+        250,
+        font_size = 45,
+        font= "Copperplate",
+        color= 'blue',
+        text= 'Find Your Fashion Style!',
+        anchor= 'center'
+    )
+
+    canvas.create_oval(
+        200,
+        350,
+        600,
+        450,
+        'white'
+    )
+    canvas.create_text(
+        400,
+        400,
+        font_size = 35,
+        font= "Copperplate",
+        color= 'blue',
+        text= 'Click here to start',
+        anchor= 'center'
+    )
+
+    # Start a loop for when the player clicks the start button
+    while True:
+
+        # catch the mouse click 
+        clicks = canvas.get_new_mouse_clicks()
+
+        if len(clicks) > 0:
+            click = clicks[0]
+
+            if click is not None:
+
+                if 200 <= click[0] <= 600 and 350 <= click[1] <= 450:
+                    canvas.clear()
+                    questions_fashion_masculine(canvas)
+                    break
+
+
+def questions_fashion_masculine(canvas):
+    canvas.create_image(0,0, 'transition.PNG')
+
+    canvas.create_text(
+        400,
+        70,
+        font_size= 40,
+        text= 'Select the Season',
+        color= 'black',
+        font= 'Copperplate',
+        anchor= 'center'
+    )
+
+
+    # OPTION 1
+    spring = canvas.create_rectangle(
+        150,
+        100,
+        350,
+        300,
+        'black'
+    )
+
+    canvas.create_image(150,100, 'spring.PNG')
+
+    # OPTION 2
+    summer = canvas.create_rectangle(
+        450,
+        100,
+        650,
+        300,
+        'black'
+    )
+
+    canvas.create_image(450,100, 'summer.PNG')
+
+
+    # OPTION 3
+    fall = canvas.create_rectangle(
+        150,
+        350,
+        350,
+        550,
+        'black'
+    )
+
+    canvas.create_image(150,350, 'fall.PNG')
+
+    # OPTION 4
+    winter = canvas.create_rectangle(
+        450,
+        350,
+        650,
+        550,
+        'black'
+    )
+
+    canvas.create_image(450,350, 'winter.PNG')
+
+
+
+# Start a loop for when the player clicks the Face Shape
+    while True:
+
+        # catch the mouse click 
+        clicks = canvas.get_new_mouse_clicks()
+
+        if len(clicks) > 0:
+            click = clicks[0]
+
+            if click is not None:
+
+                if 150 <= click[0] <= 350 and 100 <= click[1] <= 300:
+                    canvas.clear()
+                    analyzing(canvas)
+                    spring_masculine(canvas)
+                    back_to_menu(canvas)
+                    break
+                if 450 <= click[0] <= 650 and 100 <= click[1] <= 300:
+                    canvas.clear()
+                    analyzing(canvas)
+                    summer_masculine(canvas)
+                    back_to_menu(canvas)
+                    break
+                if 150 <= click[0] <= 350 and 350 <= click[1] <= 550:
+                    canvas.clear()
+                    analyzing(canvas)
+                    fall_masculine(canvas)
+                    back_to_menu(canvas)
+                    break
+                if 450 <= click[0] <= 650 and 350 <= click[1] <= 550:
+                    canvas.clear()
+                    analyzing(canvas)
+                    winter_masculine(canvas)
+                    back_to_menu(canvas)
+                    break
+
+
+def spring_masculine(canvas):
+    canvas.create_image(0,0, 'transition.PNG')
+
+    canvas.create_text(
+        400,
+        300,
+        font_size= 30,
+        text= 'OPPS! COME BACK LATER FOR THE RESULTS',
+        color= 'black',
+        font= 'Copperplate',
+        anchor= 'center'
+    )
+
+def summer_masculine(canvas):
+    canvas.create_image(0,0, 'transition.PNG')
+
+    canvas.create_text(
+        400,
+        300,
+        font_size= 30,
+        text= 'OPPS! COME BACK LATER FOR THE RESULTS',
+        color= 'black',
+        font= 'Copperplate',
+        anchor= 'center'
+    )
+
+def fall_masculine(canvas):
+    canvas.create_image(0,0, 'transition.PNG')
+
+    canvas.create_text(
+        400,
+        300,
+        font_size= 30,
+        text= 'OPPS! COME BACK LATER FOR THE RESULTS',
+        color= 'black',
+        font= 'Copperplate',
+        anchor= 'center'
+    )
+
+def winter_masculine(canvas):
+    canvas.create_image(0,0, 'transition.PNG')
+
+    canvas.create_text(
+        400,
+        300,
+        font_size= 30,
+        text= 'OPPS! COME BACK LATER FOR THE RESULTS',
+        color= 'black',
+        font= 'Copperplate',
+        anchor= 'center'
+    )
+
+
+#############################################################################
+
+# Configure a 'back to menu' #
 
 def back_to_menu(canvas):
     canvas.create_rectangle(
@@ -517,7 +1754,7 @@ def back_to_menu(canvas):
         font= 'Copperplate',
         font_size= 25,
         text= 'Back to Menu',
-        color= '#FAACE9',
+        color= 'black',
         anchor= 'center'
     )
 
@@ -537,7 +1774,7 @@ def back_to_menu(canvas):
                     menu(canvas)
                     break
 
-    
+#############################################################################   
 
 if __name__ == '__main__':
     main()
